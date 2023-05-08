@@ -8,7 +8,7 @@ import {
     useForm
 } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useSignUpModal from '@/app/hooks/useSignUpModal';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc'
 import Modal from "./Modal";
@@ -16,8 +16,8 @@ import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Button from '../Button';
 
-const RegisterModal = () => {
-    const registerModal = useRegisterModal();
+const SignUpModal = () => {
+    const registerModal = useSignUpModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors, } } = useForm<FieldValues>({
@@ -120,4 +120,4 @@ const RegisterModal = () => {
     );
 }
 
-export default RegisterModal;
+export default SignUpModal;
