@@ -1,6 +1,6 @@
 'use client'
 
-import { User } from '@prisma/client';
+import { SafeUser } from '@/app/types';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
 import { signOut } from 'next-auth/react';
@@ -10,7 +10,7 @@ import useSignUpModal from '@/app/hooks/useSignUpModal';
 import useSignInModal from '@/app/hooks/useSignInModal';
 
 interface UserMenuProps {
-    currentUser?: User | null;
+    currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
@@ -21,7 +21,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
     }, []);
-
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
@@ -62,7 +61,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 >
                     <AiOutlineMenu />
                     <div className='hidden md:block'>
-                        <Avatar />
+                        <Avatar src={currentUser?.image} />
                     </div>
                 </div>
             </div>
