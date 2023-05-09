@@ -1,13 +1,15 @@
 import { Nunito } from 'next/font/google'
 
-import Navbar from './components/navbar/Navbar'
-import ClientOnly from './components/ClientOnly'
-import SignUpModal from './components/modals/SignUpModal'
+import './globals.css';
 
-import './globals.css'
-import ToasterProvider from './provider/ToasterProvider'
-import SignInModal from './components/modals/SignInModal'
-import getCurrentUser from './actions/getCurrentUser'
+import Navbar from './components/navbar/Navbar';
+import ClientOnly from './components/ClientOnly';
+import SignUpModal from './components/modals/SignUpModal';
+import SignInModal from './components/modals/SignInModal';
+import RentModal from './components/modals/RentModal';
+
+import ToasterProvider from './provider/ToasterProvider';
+import getCurrentUser from './actions/getCurrentUser';
 
 
 export const metadata = {
@@ -32,6 +34,7 @@ export default async function RootLayout({
         className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <RentModal />
           <SignInModal />
           <SignUpModal />
           <Navbar currentUser={currentUser} />

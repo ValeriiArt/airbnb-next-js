@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-interface SignUpModalStor {
+interface SignUpModalProps {
     isOpen: boolean;
     onOpen: () => void;
     onClose: () => void;
 }
 
-const useSignUpModal = create<SignUpModalStor>((set) => ({
+const useSignUpModal = create<SignUpModalProps>((set) => ({
     isOpen: false,
     onOpen: () => set({ isOpen: true }),
     onClose: () => set({ isOpen: false })

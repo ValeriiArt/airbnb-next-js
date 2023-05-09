@@ -54,6 +54,11 @@ const SignInModal = () => {
 
     }, []);
 
+    const toggle = useCallback(() => {
+        loginModal.onClose();
+        registerModal.onOpen();
+    }, [registerModal, loginModal]);
+
     const bodyContent = (
         <div className='flex flex-col gap-4'>
             <Heading
@@ -97,9 +102,9 @@ const SignInModal = () => {
             />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='flex flex-row justify-center items-center gap-2'>
-                    <p>Already not have an account?</p>
+                    <p>First time using Airbnb?</p>
                     <p
-                        onClick={loginModal.onClose}
+                        onClick={toggle}
                         className='text-neutral-800 cursor-pointer hover:underline'
                     >
                         Sign Up
@@ -114,7 +119,7 @@ const SignInModal = () => {
             disabled={isLoading}
             isOpen={loginModal.isOpen}
             title='Sing In'
-            actionLabel='Sing In'
+            actionLabel='Continue'
             onClose={loginModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
