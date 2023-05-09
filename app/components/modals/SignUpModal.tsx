@@ -10,6 +10,7 @@ import {
 import { signIn } from 'next-auth/react'
 import toast from 'react-hot-toast';
 import useSignUpModal from '@/app/hooks/useSignUpModal';
+import useSignInModal from '@/app/hooks/useSignInModal';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc'
 import Modal from "./Modal";
@@ -19,6 +20,7 @@ import Button from '../Button';
 
 const SignUpModal = () => {
     const registerModal = useSignUpModal();
+    const loginModal = useSignInModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors, } } = useForm<FieldValues>({
@@ -43,6 +45,11 @@ const SignUpModal = () => {
                 setIsLoading(false);
             })
     }, []);
+
+    const toggle = useCallback(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+    }, [registerModal, loginModal]);
 
     const bodyContent = (
         <div className='flex flex-col gap-4'>
@@ -97,7 +104,7 @@ const SignUpModal = () => {
                 <div className='flex flex-row justify-center items-center gap-2'>
                     <p>Already have an account?</p>
                     <p
-                        onClick={registerModal.onClose}
+                        onClick={toggle}
                         className='text-neutral-800 cursor-pointer hover:underline'
                     >
                         Sign In
