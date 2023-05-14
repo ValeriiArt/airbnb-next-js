@@ -10,6 +10,7 @@ import RentModal from './components/modals/RentModal';
 
 import ToasterProvider from './provider/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
+import SearchModal from './components/modals/SearchModal';
 
 
 export const metadata = {
@@ -34,6 +35,7 @@ export default async function RootLayout({
         className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <SearchModal />
           <RentModal />
           <SignInModal />
           <SignUpModal />
